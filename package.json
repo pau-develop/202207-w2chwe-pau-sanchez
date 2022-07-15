@@ -2,7 +2,8 @@
   "name": "weekend2-challenge",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "script.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
@@ -12,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
     "@types/jest": "^28.1.5",
     "eslint": "^8.19.0",
     "eslint-config-airbnb-base": "^15.0.0",
