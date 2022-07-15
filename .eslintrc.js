@@ -10,5 +10,13 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  rules: {},
+  rules: {
+    "lines-between-class-members": [
+      "error",
+      "always",
+      { exceptAfterSingleLine: true },
+    ],
+    "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
+    "import/extensions": ["ignorePackages"],
+  },
 };
