@@ -17,5 +17,6 @@ module.exports = {
       { exceptAfterSingleLine: true },
     ],
     "no-plusplus": ["error", { allowForLoopAfterthoughts: true }],
+    "import/extensions": ["ignorePackages"],
   },
 };
