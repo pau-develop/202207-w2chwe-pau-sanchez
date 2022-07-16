@@ -9,5 +9,3 @@ testGrid.spawnBacteria(2);
 console.table(testGrid.gameGrid);
 
 testGrid.iterateOverGrid();
-
-console.table(testGrid.nextGenGrid);
