@@ -76,7 +76,7 @@ describe("Given a Grid class method called spawnBacteria that accepts a number n
 });
 
 describe("Given a checkNeighboringCell method of Grid class that takes a row Number and a column Number as arguments", () => {
-  describe("When the method is called it should pass the row and column arguments as indexes to the 2D array gameGrid that belongs to the same class and check the context of the neighboring indexes, it should return true or false according to The Game of Life rules", () => {
+  describe("When the method is called it should pass the row and column arguments as indexes to the 2D array gameGrid that belongs to the same class and check the context of the neighboring indexes, it should return the number of alive neighbors", () => {
     const exampleGrid = [
       [1, 1, 1],
       [0, 0, 1],
@@ -87,7 +87,7 @@ describe("Given a checkNeighboringCell method of Grid class that takes a row Num
     test("When checking the top row of testGrid it should skip any row on top of that, since it would return undefined, check on the rest of neighboring cells and return true or false according to the Game of Life rules", () => {
       const row = 0;
       const column = 1;
-      const expectedReturn = false;
+      const expectedReturn = 3;
 
       const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
@@ -96,7 +96,7 @@ describe("Given a checkNeighboringCell method of Grid class that takes a row Num
     test("When checking the bottom row of testGrid it should skip any row on top of that, since it would return undefined, check on the rest of neighboring cells and return true or false according to the Game of Life rules", () => {
       const row = 2;
       const column = 1;
-      const expectedReturn = false;
+      const expectedReturn = 2;
 
       const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
@@ -105,7 +105,7 @@ describe("Given a checkNeighboringCell method of Grid class that takes a row Num
     test("When checking the left column of testGrid it should skip any column to the left of it, since it would return undefined, check on the rest of neighboring cells and return true or false according to the Game of Life rules", () => {
       const row = 1;
       const column = 0;
-      const expectedReturn = false;
+      const expectedReturn = 3;
 
       const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
@@ -114,7 +114,7 @@ describe("Given a checkNeighboringCell method of Grid class that takes a row Num
     test("When checking the right column of testGrid it should skip any column to the right of it, since it would return undefined, check on the rest of neighboring cells and return true or false according to the Game of Life rules", () => {
       const row = 1;
       const column = 2;
-      const expectedReturn = false;
+      const expectedReturn = 2;
 
       const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 

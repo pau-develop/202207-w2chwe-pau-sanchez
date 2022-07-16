@@ -19,7 +19,7 @@ async function gameLoop() {
       testGrid.iterateOverGrid();
       console.table(testGrid.gameGrid);
       endOfLife = testGrid.checkForRemainingBacteria();
-      generation++;
+      generations++;
       if (generations >= 50 || endOfLife) endGame();
       else gameLoop();
     }, timer);
