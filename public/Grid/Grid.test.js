@@ -1,6 +1,7 @@
 import Grid from "./Grid.js";
 import spawnBacteria from "./Grid.js";
 import checkNeigboringCells from "./Grid.js";
+import checkForRemainingBacteria from "./Grid.js";
 
 describe("Given a Grid class", () => {
   describe("When an instance of the class is created with a number of rows and columns as arguments", () => {
@@ -88,7 +89,7 @@ describe("Given a checkNeighboringCell method of Grid class that takes a row Num
       const column = 1;
       const expectedReturn = false;
 
-      const actualReturn = testGrid.checkNeigboringCells(row, column);
+      const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
       expect(actualReturn).toEqual(expectedReturn);
     });
@@ -97,7 +98,7 @@ describe("Given a checkNeighboringCell method of Grid class that takes a row Num
       const column = 1;
       const expectedReturn = false;
 
-      const actualReturn = testGrid.checkNeigboringCells(row, column);
+      const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
       expect(actualReturn).toEqual(expectedReturn);
     });
@@ -106,7 +107,7 @@ describe("Given a checkNeighboringCell method of Grid class that takes a row Num
       const column = 0;
       const expectedReturn = false;
 
-      const actualReturn = testGrid.checkNeigboringCells(row, column);
+      const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
       expect(actualReturn).toEqual(expectedReturn);
     });
@@ -115,8 +116,36 @@ describe("Given a checkNeighboringCell method of Grid class that takes a row Num
       const column = 2;
       const expectedReturn = false;
 
-      const actualReturn = testGrid.checkNeigboringCells(row, column);
+      const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
+      expect(actualReturn).toEqual(expectedReturn);
+    });
+  });
+});
+describe("Given a checkForRemainingBacteria method of the Grid class", () => {
+  describe("The method iterates over every index of the grid and returns true if it finds a 1 and false if it reaches the end of the loop", () => {
+    test("When tested against a grid that contains a number 1 on any given index it should return false", () => {
+      const testGrid = new Grid(3, 3);
+      const exampleGrid = [
+        [1, 1, 1],
+        [0, 0, 1],
+        [1, 0, 0],
+      ];
+      testGrid.gameGrid = exampleGrid;
+      const expectedReturn = false;
+      const actualReturn = testGrid.checkForRemainingBacteria();
+      expect(actualReturn).toEqual(expectedReturn);
+    });
+    test("When tested against a grid that doesn't contain any number 1 it should return true", () => {
+      const testGrid = new Grid(3, 3);
+      const exampleGrid = [
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+      ];
+      testGrid.gameGrid = exampleGrid;
+      const expectedReturn = true;
+      const actualReturn = testGrid.checkForRemainingBacteria();
       expect(actualReturn).toEqual(expectedReturn);
     });
   });
