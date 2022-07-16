@@ -43,12 +43,12 @@ class Grid {
     let aliveNeighbor = 0;
     let deadNeighbor = 0;
     //east
-    if (column <= this.columns - 1) {
+    if (column < this.columns - 1) {
       if (this.gameGrid[row][column + 1] === 0) deadNeighbor++;
       else if (this.gameGrid[row][column + 1] === 1) aliveNeighbor++;
     }
     //south-east
-    if (row < this.rows - 1 && column <= this.columns - 1) {
+    if (row < this.rows - 1 && column < this.columns - 1) {
       if (this.gameGrid[row + 1][column + 1] === 0) deadNeighbor++;
       else if (this.gameGrid[row + 1][column + 1] === 1) aliveNeighbor++;
     }
@@ -77,8 +77,14 @@ class Grid {
       if (this.gameGrid[row - 1][column] === 0) deadNeighbor++;
       else if (this.gameGrid[row - 1][column] === 1) aliveNeighbor++;
     }
-    //count neighbors
-    if (aliveNeighbor < 2) return true;
+    //north-east
+    if (row - 1 >= 0 && column < this.columns - 1) {
+      if (this.gameGrid[row - 1][column + 1] === 0) deadNeighbor++;
+      else if (this.gameGrid[row - 1][column + 1] === 1) aliveNeighbor++;
+    }
+    if (aliveNeighbor < 2 && deadNeighbor !== 3)
+      //count neighbors
+      return true;
     else if (aliveNeighbor === 2 || aliveNeighbor === 3) return false;
     else if (aliveNeighbor > 3) return true;
     else if (deadNeighbor === 3) return false;

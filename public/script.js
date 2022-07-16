@@ -1,10 +1,10 @@
 import Grid from "./Grid/Grid.js";
 
-const testGrid = new Grid(3, 3);
+const testGrid = new Grid(9, 9);
 
 console.table(testGrid.gameGrid);
 
-testGrid.spawnBacteria(2);
+testGrid.spawnBacteria(40);
 
 console.table(testGrid.gameGrid);
 
