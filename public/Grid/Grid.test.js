@@ -9,7 +9,12 @@ describe("Given a Grid class", () => {
       const expectedReturn = {
         rows: 2,
         columns: 2,
+        population: undefined,
         gameGrid: [
+          [0, 0],
+          [0, 0],
+        ],
+        nextGenGrid: [
           [0, 0],
           [0, 0],
         ],
