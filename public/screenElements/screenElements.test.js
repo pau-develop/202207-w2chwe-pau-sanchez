@@ -59,3 +59,34 @@ describe("Given a increaseSpeed function", () => {
     });
   });
 });
+
+describe("Given a function passValuesToHtmlGrid that takes an instance of grid class and an html grid", () => {
+  describe("It should iterate over the grid.gameGrid...", () => {
+    test("If the value of gameGrid is 0 it should change the html grid background color to black and if the value is 1 it should change the background color to yellow", () => {
+      const rows = 3;
+      const cols = 3;
+      const exampleGrid = [
+        [1, 1, 1],
+        [0, 0, 1],
+        [1, 0, 0],
+      ];
+      const expectedHtmlGridOutcome = [
+        ["yellow", "yellow", "yellow"],
+        ["black", "black", "yellow"],
+        ["yellow", "black", "black"],
+      ];
+      const htmlGrid = [
+        [, ,],
+        [, ,],
+        [, ,],
+      ];
+      for (let x = 0; x < rows; x++) {
+        for (let y = 0; y < cols; y++) {
+          if (exampleGrid[x][y] === 0) htmlGrid[x][y] = "black";
+          else if (exampleGrid[x][y] === 1) htmlGrid[x][y] = "yellow";
+        }
+      }
+      expect(htmlGrid).toEqual(expectedHtmlGridOutcome);
+    });
+  });
+});
