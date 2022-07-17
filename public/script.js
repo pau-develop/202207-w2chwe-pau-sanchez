@@ -12,7 +12,7 @@ const testGrid = new Grid(100, 100);
 
 const htmlGrid = generateScreenElements(testGrid);
 
-testGrid.spawnBacteria(500);
+testGrid.spawnBacteria(5000);
 
 const endGame = function () {
   console.log("End of the game ಥ_ಥ");
