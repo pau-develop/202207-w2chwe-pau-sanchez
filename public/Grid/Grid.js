@@ -48,7 +48,7 @@ class Grid {
         else this.nextGenGrid[x][y] = 1;
       }
     }
-    this.gameGrid = this.nextGenGrid;
+    // this.gameGrid = this.nextGenGrid;
   }
 
   checkNeighboringBacteria(row, column) {
@@ -91,6 +91,14 @@ class Grid {
       }
     }
     return true;
+  }
+
+  passValuesFromNextGenGridToCurrentGrid() {
+    for (let x = 0; x < this.rows; x++) {
+      for (let y = 0; y < this.columns; y++) {
+        this.gameGrid[x][y] = this.nextGenGrid[x][y];
+      }
+    }
   }
 }
 

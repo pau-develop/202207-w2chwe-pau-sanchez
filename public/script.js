@@ -21,6 +21,7 @@ const endGame = function () {
 async function gameLoop() {
   setTimeout(function () {
     testGrid.iterateOverGrid();
+    testGrid.passValuesFromNextGenGridToCurrentGrid();
     passValuesToHtmlGrid(testGrid, htmlGrid);
     endOfLife = testGrid.checkForRemainingBacteria();
     generations++;
