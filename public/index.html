@@ -5,6 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link
+      rel="shortcut icon"
+      href="https://cdn-icons-png.flaticon.com/512/2904/2904312.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik+Moonrocks&display=swap"
+      rel="stylesheet"
+    />
     <title>Game of Life by Pau Sánchezs</title>
   </head>
   <body>
@@ -13,8 +24,20 @@
         <h1 class="header__title">GAME OF LIFE</h1>
       </header>
       <main class="main">
-        <section class="main__grid"></section>
-        <section class="main__menu"></section>
+        <section class="grid"></section>
+        <section class="menu">
+          <aside class="aside">
+            <h1 class="aside__title">SETTINGS</h1>
+            <section class="aside__speed">
+              <h2>speed</h2>
+              <div class="button-wrap">
+                <button class="button-wrap__minus">-</button>
+                <span class="button-wrap__span">100%</span>
+                <button class="button-wrap__plus">+</button>
+              </div>
+            </section>
+          </aside>
+        </section>
       </main>
     </div>
   </body>
