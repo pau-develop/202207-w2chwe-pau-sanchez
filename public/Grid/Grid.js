@@ -36,54 +36,51 @@ class Grid {
       for (let y = 0; y < this.columns; y++) {
         aliveNeighbors = this.checkNeighboringBacteria(x, y);
         let currentCell = this.gameGrid[x][y];
-        if (
-          (currentCell === 1 && aliveNeighbors === 2) ||
-          (currentCell === 1 && aliveNeighbors === 3)
-        )
-          shouldDie = false;
-        else if (currentCell === 0 && aliveNeighbors === 3) shouldDie = false;
-        else shouldDie = true;
+        if (currentCell === 1) {
+          if (aliveNeighbors < 2 || aliveNeighbors > 3) shouldDie = true;
+          else shouldDie = false;
+        } else if (currentCell === 0) {
+          if (aliveNeighbors === 3) shouldDie = false;
+          else shouldDie = true;
+        }
 
         if (shouldDie) this.nextGenGrid[x][y] = 0;
         else this.nextGenGrid[x][y] = 1;
       }
     }
-    this.gameGrid = this.nextGenGrid;
+    // this.gameGrid = this.nextGenGrid;
   }
 
   checkNeighboringBacteria(row, column) {
     let aliveNeighbors = 0;
-    //east
-    if (column < this.columns - 1) {
-      if (this.gameGrid[row][column + 1] === 1) aliveNeighbors++;
-    }
-    //south-east
-    if (row < this.rows - 1 && column < this.columns - 1) {
-      if (this.gameGrid[row + 1][column + 1] === 1) aliveNeighbors++;
-    }
-    //south
-    if (row < this.rows - 1) {
-      if (this.gameGrid[row + 1][column] === 1) aliveNeighbors++;
-    }
-    //south-west
-    if (row < this.rows - 1 && column - 1 >= 0) {
-      if (this.gameGrid[row + 1][column - 1] === 1) aliveNeighbors++;
-    }
-    //west
-    if (column - 1 >= 0) {
-      if (this.gameGrid[row][column - 1] === 1) aliveNeighbors++;
-    } //north-west
-    if (column - 1 >= 0 && row - 1 >= 0) {
-      if (this.gameGrid[row - 1][column - 1] === 1) aliveNeighbors++;
-    }
+    let differentalTop = 0;
+    let differentialBot = 0;
+    let differentialLeft = 0;
+    let differentialRight = 0;
+    if (row === 0) differentalTop = this.rows;
+    if (row === this.rows - 1) differentialBot = this.rows;
+    if (column === 0) differentialLeft = this.columns;
+    if (column === this.columns - 1) differentialRight = this.columns;
+    //north-west
+    aliveNeighbors +=
+      this.gameGrid[row + differentalTop - 1][column + differentialLeft - 1];
     //north
-    if (row - 1 >= 0) {
-      if (this.gameGrid[row - 1][column] === 1) aliveNeighbors++;
-    }
+    aliveNeighbors += this.gameGrid[row + differentalTop - 1][column];
     //north-east
-    if (row - 1 >= 0 && column < this.columns - 1) {
-      if (this.gameGrid[row - 1][column + 1] === 1) aliveNeighbors++;
-    }
+    aliveNeighbors +=
+      this.gameGrid[row + differentalTop - 1][column - differentialRight + 1];
+    //east
+    aliveNeighbors += this.gameGrid[row][column - differentialRight + 1];
+    //south-east
+    aliveNeighbors +=
+      this.gameGrid[row - differentialBot + 1][column - differentialRight + 1];
+    //south
+    aliveNeighbors += this.gameGrid[row - differentialBot + 1][column];
+    //south-west
+    aliveNeighbors +=
+      this.gameGrid[row - differentialBot + 1][column + differentialLeft - 1];
+    //west
+    aliveNeighbors += this.gameGrid[row][column + differentialLeft - 1];
     return aliveNeighbors;
   }
 
@@ -94,6 +91,14 @@ class Grid {
       }
     }
     return true;
+  }
+
+  passValuesFromNextGenGridToCurrentGrid() {
+    for (let x = 0; x < this.rows; x++) {
+      for (let y = 0; y < this.columns; y++) {
+        this.gameGrid[x][y] = this.nextGenGrid[x][y];
+      }
+    }
   }
 }
 

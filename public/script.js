@@ -12,7 +12,7 @@ const testGrid = new Grid(100, 100);
 
 const htmlGrid = generateScreenElements(testGrid);
 
-testGrid.spawnBacteria(1000);
+testGrid.spawnBacteria(5000);
 
 const endGame = function () {
   console.log("End of the game ಥ_ಥ");
@@ -21,6 +21,7 @@ const endGame = function () {
 async function gameLoop() {
   setTimeout(function () {
     testGrid.iterateOverGrid();
+    testGrid.passValuesFromNextGenGridToCurrentGrid();
     passValuesToHtmlGrid(testGrid, htmlGrid);
     endOfLife = testGrid.checkForRemainingBacteria();
     generations++;
