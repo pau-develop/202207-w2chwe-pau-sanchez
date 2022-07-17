@@ -1,3 +1,5 @@
+let timer = 0;
+
 const generateScreenElements = function (grid) {
   const gridElement = document.querySelector(".grid");
   const gridElementSize = gridElement.getBoundingClientRect();
@@ -32,4 +34,16 @@ const passValuesToHtmlGrid = function (grid, htmlGrid) {
   }
 };
 
-export { generateScreenElements, passValuesToHtmlGrid };
+const buttonMinus = document.querySelector(".button-wrap__minus");
+const buttonPlus = document.querySelector(".button-wrap__plus");
+const buttonSpan = document.querySelector(".button-wrap__span");
+
+buttonMinus.addEventListener("click", () => {
+  if (timer < 400) timer += 10;
+});
+
+buttonPlus.addEventListener("click", () => {
+  if (timer > 0) timer -= 10;
+});
+
+export { generateScreenElements, passValuesToHtmlGrid, timer };
