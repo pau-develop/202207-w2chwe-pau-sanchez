@@ -2,6 +2,7 @@ body {
   margin: 0;
   background: black;
   box-sizing: border-box;
+  font-family: "Rubik Moonrocks", sans-serif;
 }
 
 .page-wrap {
@@ -12,12 +13,16 @@ body {
 }
 
 .header {
-  height: 80px;
   width: 100%;
   text-align: center;
   background-color: rgb(40, 29, 46);
   &__title {
     color: white;
+  }
+  h1 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 100;
   }
 }
 .main {
