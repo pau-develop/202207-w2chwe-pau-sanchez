@@ -3,10 +3,11 @@ import {
   generateScreenElements,
   passValuesToHtmlGrid,
   timer,
+  generations,
 } from "./screenElements/screenElements.js";
 
 let endOfLife = false;
-let generations = 0;
+let cycles = 0;
 
 const testGrid = new Grid(100, 100);
 
@@ -24,8 +25,8 @@ async function gameLoop() {
     testGrid.passValuesFromNextGenGridToCurrentGrid();
     passValuesToHtmlGrid(testGrid, htmlGrid);
     endOfLife = testGrid.checkForRemainingBacteria();
-    generations++;
-    if (generations >= 1000 || endOfLife) endGame();
+    cycles++;
+    if (cycles >= generations || endOfLife) endGame();
     else gameLoop();
   }, timer);
 }

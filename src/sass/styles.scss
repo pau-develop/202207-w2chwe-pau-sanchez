@@ -60,7 +60,6 @@ body {
   margin: 5% 5%;
   margin-right: 20%;
   border: 2px solid $primary-color;
-  border-radius: 25px;
   display: flex;
   flex-direction: column;
   &__title {
@@ -76,12 +75,14 @@ body {
   }
   &__speed {
     height: 20%;
+    width: 100%;
     background-color: $secondary-color;
     text-align: center;
     color: $font-color;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    align-items: center;
     h2 {
       margin: 0;
       font-weight: 100;
@@ -95,4 +96,41 @@ body {
       border-radius: 10px;
     }
   }
+  &__generations {
+    height: 20%;
+    width: 100%;
+    background-color: $secondary-color;
+    text-align: center;
+    color: $font-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    h2 {
+      margin: 0;
+      font-weight: 100;
+      font-size: 1rem;
+    }
+    button {
+      font-family: "Rubik Moonrocks", sans-serif;
+      color: $font-color;
+      background: transparent;
+      border: 1px solid $font-color;
+      border-radius: 10px;
+    }
+  }
+}
+.button-wrap {
+  display: flex;
+  flex-direction: row;
+  width: 75%;
+  justify-content: space-between;
+}
+
+.aside__top {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
 }
