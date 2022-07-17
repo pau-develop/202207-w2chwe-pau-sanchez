@@ -1,3 +1,5 @@
+@import "__colors";
+
 body {
   margin: 0;
   background: black;
@@ -15,9 +17,9 @@ body {
 .header {
   width: 100%;
   text-align: center;
-  background-color: rgb(40, 29, 46);
+  background-color: $primary-color;
   &__title {
-    color: yellow;
+    color: $font-color;
   }
   h1 {
     font-size: 3rem;
@@ -42,7 +44,7 @@ body {
   align-items: center;
   margin: 5% 0;
   div {
-    border: 1px solid rgb(40, 29, 46);
+    border: 1px solid $primary-color;
   }
 }
 .menu {
@@ -57,12 +59,12 @@ body {
   height: 75%;
   margin: 5% 5%;
   margin-right: 20%;
-  border: 2px solid rgb(40, 29, 46);
+  border: 2px solid $primary-color;
   display: flex;
   flex-direction: column;
   &__title {
-    background-color: rgb(40, 29, 46);
-    color: yellow;
+    background-color: $primary-color;
+    color: $font-color;
     margin: 0;
     height: 10%;
     display: flex;
@@ -70,5 +72,26 @@ body {
     align-items: center;
     font-weight: 100;
     font-size: 2rem;
+  }
+  &__speed {
+    height: 20%;
+    background-color: $secondary-color;
+    text-align: center;
+    color: $font-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    h2 {
+      margin: 0;
+      font-weight: 100;
+      font-size: 1rem;
+    }
+    button {
+      font-family: "Rubik Moonrocks", sans-serif;
+      color: $font-color;
+      background: transparent;
+      border: 1px solid $font-color;
+      border-radius: 10px;
+    }
   }
 }
