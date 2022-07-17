@@ -84,37 +84,37 @@ describe("Given a checkNeighboringCell method of Grid class that takes a row Num
     ];
     const testGrid = new Grid(3, 3);
     testGrid.gameGrid = exampleGrid;
-    test("When checking the top row of testGrid it should skip any row on top of that, since it would return undefined, check on the rest of neighboring cells and return true or false according to the Game of Life rules", () => {
+    test("When checking an index of the top row it should check for alive bacteria in the 8 cells surronding it. When reaching an out of bounds index (-1), it should wrap around and look for neighbors in the last row (index 2)", () => {
       const row = 0;
       const column = 1;
-      const expectedReturn = 3;
+      const expectedReturn = 4;
 
       const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
       expect(actualReturn).toEqual(expectedReturn);
     });
-    test("When checking the bottom row of testGrid it should skip any row on top of that, since it would return undefined, check on the rest of neighboring cells and return true or false according to the Game of Life rules", () => {
+    test("When checking an index of the bottom row it should check for alive bacteria in the 8 cells surronding it. When reaching an out of bounds index (3), it should wrap around and look for neighbors in the first row (index 0)", () => {
       const row = 2;
       const column = 1;
-      const expectedReturn = 2;
+      const expectedReturn = 5;
 
       const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
       expect(actualReturn).toEqual(expectedReturn);
     });
-    test("When checking the left column of testGrid it should skip any column to the left of it, since it would return undefined, check on the rest of neighboring cells and return true or false according to the Game of Life rules", () => {
+    test("When checking an index of the left column it should check for alive bacteria in the 8 cells surronding it. When reaching an out of bounds index (column in index -1), it should wrap around and look for neighbors in the last column (index 2)", () => {
       const row = 1;
       const column = 0;
-      const expectedReturn = 3;
+      const expectedReturn = 5;
 
       const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
       expect(actualReturn).toEqual(expectedReturn);
     });
-    test("When checking the right column of testGrid it should skip any column to the right of it, since it would return undefined, check on the rest of neighboring cells and return true or false according to the Game of Life rules", () => {
+    test("When checking an index of the right column it should check for alive bacteria in the 8 cells surronding it. When reaching an out of bounds index (column in index 3), it should wrap around and look for neighbors in the first column (index 0)", () => {
       const row = 1;
       const column = 2;
-      const expectedReturn = 2;
+      const expectedReturn = 4;
 
       const actualReturn = testGrid.checkNeighboringBacteria(row, column);
 
