@@ -1,4 +1,4 @@
-let timer = 0;
+let timer = 20;
 
 const generateScreenElements = function (grid) {
   const gridElement = document.querySelector(".grid");
@@ -39,11 +39,13 @@ const buttonPlus = document.querySelector(".button-wrap__plus");
 const buttonSpan = document.querySelector(".button-wrap__span");
 
 buttonMinus.addEventListener("click", () => {
-  if (timer < 400) timer += 10;
+  if (timer < 400) timer += 20;
+  else timer = 400;
 });
 
 buttonPlus.addEventListener("click", () => {
-  if (timer > 0) timer -= 10;
+  if (timer > 0) timer -= 20;
+  else timer = 0;
 });
 
 export { generateScreenElements, passValuesToHtmlGrid, timer };
