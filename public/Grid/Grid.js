@@ -43,12 +43,14 @@ class Grid {
           shouldDie = false;
         else if (currentCell === 0 && aliveNeighbors === 3) shouldDie = false;
         else shouldDie = true;
+
         if (shouldDie) this.nextGenGrid[x][y] = 0;
         else this.nextGenGrid[x][y] = 1;
       }
     }
     this.gameGrid = this.nextGenGrid;
   }
+
   checkNeighboringBacteria(row, column) {
     let aliveNeighbors = 0;
     //east
