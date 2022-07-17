@@ -1,4 +1,5 @@
 let timer = 20;
+let generations = 1000;
 
 const generateScreenElements = function (grid) {
   const gridElement = document.querySelector(".grid");
@@ -34,20 +35,49 @@ const passValuesToHtmlGrid = function (grid, htmlGrid) {
   }
 };
 
-const buttonMinus = document.querySelector(".button-wrap__minus");
-const buttonPlus = document.querySelector(".button-wrap__plus");
-const buttonSpan = document.querySelector(".button-wrap__span");
+const buttonMinusSpeed = document.querySelector(".button-wrap__minus");
+const buttonPlusSpeed = document.querySelector(".button-wrap__plus");
+const buttonMinusGenerations = document.querySelector(".button-wrap__minusG");
+const buttonPlusGenerations = document.querySelector(".button-wrap__plusG");
+const percentElement = document.querySelector(".button-wrap__percent");
+const generationsElement = document.querySelector(".button-wrap__generations");
+generationsElement.textContent = generations;
 
-buttonMinus.addEventListener("click", () => {
+buttonMinusSpeed.addEventListener("click", () => {
   timer += 20;
-  if (timer > 400) timer = 400;
+  if (timer > 380) timer = 380;
+  updateSpeedPercentNumber(timer);
   return timer;
 });
 
-buttonPlus.addEventListener("click", () => {
+buttonPlusSpeed.addEventListener("click", () => {
   timer -= 20;
   if (timer < 0) timer = 0;
+  updateSpeedPercentNumber(timer);
   return timer;
 });
 
-export { generateScreenElements, passValuesToHtmlGrid, timer };
+buttonMinusGenerations.addEventListener("click", () => {
+  generations -= 100;
+  if (generations < 0) generations = 0;
+  updateGenerationsNumber(generations);
+  return generations;
+});
+
+buttonPlusGenerations.addEventListener("click", () => {
+  generations += 100;
+  updateGenerationsNumber(generations);
+  return generations;
+});
+
+const updateSpeedPercentNumber = function (timer) {
+  const maxPercent = 400;
+  const percent = parseInt((timer / maxPercent) * 100);
+  const inversePercent = (timer / 4) * -1 + maxPercent / 2 / 2;
+  percentElement.textContent = inversePercent + "%";
+};
+
+const updateGenerationsNumber = function (generations) {
+  generationsElement.textContent = generations;
+};
+export { generateScreenElements, passValuesToHtmlGrid, timer, generations };
