@@ -37,8 +37,8 @@ class Grid {
         aliveNeighbors = this.checkNeighboringBacteria(x, y);
         let currentCell = this.gameGrid[x][y];
         if (currentCell === 1) {
-          if (aliveNeighbors === 2 || aliveNeighbors === 3) shouldDie = false;
-          else shouldDie = true;
+          if (aliveNeighbors < 2 || aliveNeighbors > 3) shouldDie = true;
+          else shouldDie = false;
         } else if (currentCell === 0) {
           if (aliveNeighbors === 3) shouldDie = false;
           else shouldDie = true;
@@ -82,38 +82,6 @@ class Grid {
     //west
     aliveNeighbors += this.gameGrid[row][column + differentialLeft - 1];
     return aliveNeighbors;
-    //east
-    // if (column <= this.columns - 1) {
-    //   if (this.gameGrid[row][column + 1] === 1) aliveNeighbors++;
-    // }
-    // //south-east
-    // if (row < this.rows - 1 && column < this.columns - 1) {
-    //   if (this.gameGrid[row + 1][column + 1] === 1) aliveNeighbors++;
-    // }
-    // //south
-    // if (row < this.rows - 1) {
-    //   if (this.gameGrid[row + 1][column] === 1) aliveNeighbors++;
-    // }
-    // //south-west
-    // if (row < this.rows - 1 && column - 1 >= 0) {
-    //   if (this.gameGrid[row + 1][column - 1] === 1) aliveNeighbors++;
-    // }
-    // //west
-    // if (column - 1 >= 0) {
-    //   if (this.gameGrid[row][column - 1] === 1) aliveNeighbors++;
-    // } //north-west
-    // if (column - 1 >= 0 && row - 1 >= 0) {
-    //   if (this.gameGrid[row - 1][column - 1] === 1) aliveNeighbors++;
-    // }
-    // //north
-    // if (row - 1 >= 0) {
-    //   if (this.gameGrid[row - 1][column] === 1) aliveNeighbors++;
-    // }
-    // //north-east
-    // if (row - 1 >= 0 && column < this.columns - 1) {
-    //   if (this.gameGrid[row - 1][column + 1] === 1) aliveNeighbors++;
-    // }
-    // return aliveNeighbors;
   }
 
   checkForRemainingBacteria() {
