@@ -6,15 +6,13 @@ import {
 
 let endOfLife = false;
 let generations = 0;
-let timer = 100;
+let timer = 25;
 
-const testGrid = new Grid(50, 50);
-console.table(testGrid.gameGrid);
+const testGrid = new Grid(100, 100);
 
 const htmlGrid = generateScreenElements(testGrid);
 
-testGrid.spawnBacteria(300);
-console.table(testGrid.gameGrid);
+testGrid.spawnBacteria(500);
 
 const endGame = function () {
   console.log("End of the game ಥ_ಥ");
@@ -25,10 +23,9 @@ async function gameLoop() {
     setTimeout(function () {
       testGrid.iterateOverGrid();
       passValuesToHtmlGrid(testGrid, htmlGrid);
-      console.table(testGrid.gameGrid);
       endOfLife = testGrid.checkForRemainingBacteria();
       generations++;
-      if (generations >= 300 || endOfLife) endGame();
+      if (generations >= 1000 || endOfLife) endGame();
       else gameLoop();
     }, timer);
   });
