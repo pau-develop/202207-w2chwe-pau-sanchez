@@ -1,5 +1,5 @@
 const generateScreenElements = function (grid) {
-  const gridElement = document.querySelector(".main__grid");
+  const gridElement = document.querySelector(".grid");
   const gridElementSize = gridElement.getBoundingClientRect();
   const cellWidth = gridElementSize.width / grid.columns;
   const cellHeight = gridElementSize.height / grid.rows;
